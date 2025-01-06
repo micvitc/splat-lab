@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bulyk58pc7851"]
+
+[ext_resource type="Texture2D" uid="uid://bplsmbchmyqpb" path="res://assets/85-cottage_obj/cottage_diffuse.png" id="1_p8ab6"]
+[ext_resource type="ArrayMesh" uid="uid://p5ly42rnnw4p" path="res://assets/85-cottage_obj/cottage_obj.obj" id="2_ro2vk"]
+[ext_resource type="Script" path="res://src/world/node_3d.gd" id="3_u7ej2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30ede"]
+albedo_texture = ExtResource("1_p8ab6")
+
+[node name="ModelViewer" type="Node3D"]
+script = ExtResource("3_u7ej2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8809, 17.2916, 13.5466)
+
+[node name="Control" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Camera3D/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Move The Mouse"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.3257, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_30ede")
+mesh = ExtResource("2_ro2vk")
