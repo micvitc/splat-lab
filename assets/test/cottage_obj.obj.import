@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://p5ly42rnnw4p"
+path="res://.godot/imported/cottage_obj.obj-dd35807bd6afd6fd7f2a80ddb6161541.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cottage_obj.obj-dd35807bd6afd6fd7f2a80ddb6161541.mesh"]
+
+source_file="res://assets/test/cottage_obj.obj"
+dest_files=["res://.godot/imported/cottage_obj.obj-dd35807bd6afd6fd7f2a80ddb6161541.mesh", "res://.godot/imported/cottage_obj.obj-dd35807bd6afd6fd7f2a80ddb6161541.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

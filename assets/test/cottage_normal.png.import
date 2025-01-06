@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bplsmbchmyqpb"
-path.s3tc="res://.godot/imported/cottage_diffuse.png-d6c6dbc6855aa3263246b97e56781c11.s3tc.ctex"
+uid="uid://cr3ll1tkr1baj"
+path.s3tc="res://.godot/imported/cottage_normal.png-8879488e7a85c2ef523e2547d25372df.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/85-cottage_obj/cottage_diffuse.png"
-dest_files=["res://.godot/imported/cottage_diffuse.png-d6c6dbc6855aa3263246b97e56781c11.s3tc.ctex"]
+source_file="res://assets/test/cottage_normal.png"
+dest_files=["res://.godot/imported/cottage_normal.png-8879488e7a85c2ef523e2547d25372df.s3tc.ctex"]
 
 [params]
 
