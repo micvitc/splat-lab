@@ -1,13 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://bulyk58pc7851"]
 
-[ext_resource type="Script" path="res://src/world/main.gd" id="1_6ltq1"]
 [ext_resource type="Texture2D" uid="uid://bplsmbchmyqpb" path="res://assets/test/cottage_diffuse.png" id="1_p8ab6"]
+[ext_resource type="ArrayMesh" uid="uid://p5ly42rnnw4p" path="res://assets/test/cottage_obj.obj" id="2_ro2vk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30ede"]
 albedo_texture = ExtResource("1_p8ab6")
 
 [node name="ModelViewer" type="Node3D"]
-script = ExtResource("1_6ltq1")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8809, 17.2916, 13.5466)
@@ -17,6 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.3257, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_30ede")
+mesh = ExtResource("2_ro2vk")
 
 [node name="FileDialog" type="FileDialog" parent="."]
 title = "Open a File"
@@ -26,7 +26,7 @@ ok_button_text = "Open"
 dialog_hide_on_ok = true
 file_mode = 0
 access = 2
-root_subfolder = "C:/User/ameen/Downloads/"
+root_subfolder = "C:/"
 
 [node name="Button" type="Button" parent="."]
 offset_top = 2.0
@@ -34,5 +34,15 @@ offset_right = 131.0
 offset_bottom = 49.0
 text = "Import File"
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 408.0
+offset_top = 132.0
+offset_right = 448.0
+offset_bottom = 172.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

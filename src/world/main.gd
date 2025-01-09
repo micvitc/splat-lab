@@ -29,9 +29,10 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if pressed and event is InputEventMouseMotion:
-		# Rotate the model
-		mesh_instance.rotation.x += event.relative.y * rotation_speed
-		mesh_instance.rotation.y += event.relative.x * rotation_speed
+		# Rotate the model using the mouse motion
+		var rotation_delta = Vector3(-event.relative.y * rotation_speed, -event.relative.x * rotation_speed, 0)
+		mesh_instance.transform.basis = mesh_instance.transform.basis.rotated(Vector3(0, 1, 0), rotation_delta.y)
+		mesh_instance.transform.basis = mesh_instance.transform.basis.rotated(Vector3(1, 0, 0), rotation_delta.x)
 
 	elif event is InputEventMouseButton:
 		# Zoom in and out using the mouse wheel
@@ -76,17 +77,35 @@ func reset_view() -> void:
 		camera_transform.origin = original_camera_position
 		camera.transform = camera_transform
 
-func _on_load_image_processed():
-	$FileDialog.popup()
-
 
 func _on_file_dialog_file_selected(path: String) -> void:
+	# Load the 3D model (e.g., .obj, .fbx, or .glb)
+	var model = load(path)  # Load the model at the specified path
+
+	if model:
+		# If the loaded file is a Mesh, we need to create a MeshInstance3D
+		if model is Mesh:
+			var mesh_instance = MeshInstance3D.new()
+			mesh_instance.mesh = model  # Set the loaded model as the mesh
+			# Optionally set the position of the model
+			mesh_instance.transform.origin = Vector3(0, 0, 0)
+			# Add the mesh instance to the current scene
+			$MeshInstance3D.add_child(mesh_instance)  # Or add it to a specific node
+
+		elif model is PackedScene:
+			# If the model is a scene (like .glb or .fbx), instance the scene
+			var instance = model.instantiate()  # Use 'instantiate' instead of 'instance' in Godot 4.x
+			# Optionally set the position of the instance
+			instance.transform.origin = Vector3(0, 0, 0)
+			# Add the instance to the current scene
+			get_parent().add_child(instance)  # Add it to the parent node
+
+		print("Model loaded successfully!")
+	else:
+		print("Failed to load the model.")
+
 	
-	var image = Image.new()
-	image.load(path)
-	
-	var image_texture = ImageTexture.new()
-	image_texture.set_image(image)
-	
-	$ColorRect/TextureRect.texture = image_texture
-	
+
+
+func _on_button_pressed() -> void:
+	$FileDialog.popup()
